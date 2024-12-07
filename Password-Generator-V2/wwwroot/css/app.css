@@ -86,3 +86,11 @@ code {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
 }
+
+@media (max-width: 992px) {
+    .custom-gap {
+        gap: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}

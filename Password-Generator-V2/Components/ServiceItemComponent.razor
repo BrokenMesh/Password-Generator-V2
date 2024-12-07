@@ -1,0 +1,17 @@
+﻿<div class="card">
+    <div class="card-header ">
+        <div class="row">
+            <div class="col-sm-6 text-left">
+                <h5 class="card-category">Services</h5>
+                <h2 class="card-title">@Service.Name</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div style="height: 100px;"></div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public ServiceItem Service{ get; set; }
+}

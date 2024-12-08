@@ -1,5 +1,7 @@
 ﻿@page "/"
 
+@inject AppStateService AppState
+
 <PageTitle>Password-Generator-V2</PageTitle>
 
 <div class="row custom-gap">
@@ -14,7 +16,7 @@
 <hr />
 
 <ul class="services-list list-group">
-    @foreach (var i in serviceItems) {
+    @foreach (var i in AppState.ServiceItems) {
         <li class="row">
             <div class="col-lg-12">
                 <ServiceItemComponent Service="@i" />
@@ -33,37 +35,27 @@
 </div>
 
 <style>
-    .create-pwd-container {
-        width: 100%;
-    }
+.create-pwd-container {
+    width: 100%;
+}
 
-    .create-pwd-centered {
-        width: 400px;
-        margin: 0 auto;
-        display: flex;
-        gap: 4px;
-    }
+.create-pwd-centered {
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4px;
+}
 
-    .services-list > li:not(:last-child) {
-        margin-bottom: 10px;
-    }
+.services-list > li:not(:last-child) {
+    margin-bottom: 10px;
+}
 </style>
 
 @code {
-
     private string newServiceValue = "";
 
-    private List<ServiceItem> serviceItems;
-
-    protected override void OnInitialized() {
-        serviceItems = new List<ServiceItem> {
-            new ("Google"),
-            new ("Demo"),
-        };
-    }
-
     private void AddService() {
-        serviceItems.Add(new ServiceItem(newServiceValue));
+        AppState.AddService(newServiceValue);
         newServiceValue = "";
         StateHasChanged();
     }

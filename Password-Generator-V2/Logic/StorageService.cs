@@ -5,9 +5,9 @@ namespace Password_Generator_V2.Logic
 {
     public class StorageService
     {
-        private readonly JSRuntime jsRuntime;
+        private readonly IJSRuntime jsRuntime;
 
-        public StorageService(JSRuntime _jSRuntime) {
+        public StorageService(IJSRuntime _jSRuntime) {
             jsRuntime = _jSRuntime;
         }
 

@@ -4115,7 +4115,8 @@ input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].bt
     margin-right: .9375rem;
     font-size: .99925rem;
     line-height: inherit;
-    white-space: nowrap
+    white-space: nowrap;
+    position: relative;
 }
 
     .navbar-brand:focus, .navbar-brand:hover {
@@ -13429,7 +13430,6 @@ img {
     }
 
     .navbar .navbar-brand {
-        position: fixed;
         padding-top: .3125rem;
         padding-bottom: .3125rem;
         color: #fff;

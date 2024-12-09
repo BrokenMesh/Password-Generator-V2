@@ -1,5 +1,7 @@
 ﻿@page "/"
 
+@implements IDisposable
+
 @inject AppStateService AppState
 
 <PageTitle>Password-Generator-V2</PageTitle>
@@ -30,7 +32,7 @@
 <div class="create-pwd-container">
     <div class="create-pwd-centered">
         <input @bind-value="@newServiceValue" type="text" class="form-control">
-        <button @onclick="AddService" class="btn btn-primary" type="button">Add Service</button>
+        <button @onclick="AddService" class="btn btn-primary" type="button" disabled="@(string.IsNullOrEmpty(newServiceValue))">Add Service</button>
     </div>
 </div>
 
@@ -40,10 +42,11 @@
 }
 
 .create-pwd-centered {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     margin: 0 auto;
     display: flex;
-    gap: 4px;
+    gap: 10px;
 }
 
 .services-list > li:not(:last-child) {
@@ -53,6 +56,18 @@
 
 @code {
     private string newServiceValue = "";
+
+    protected override void OnInitialized() {
+        AppState.ServiceItemsChanged += OnServiceItemsChanged;
+    }
+
+    public void Dispose() {
+        AppState.ServiceItemsChanged -= OnServiceItemsChanged;
+    }
+
+    public async Task OnServiceItemsChanged() {
+        await InvokeAsync(StateHasChanged);
+    }
 
     private void AddService() {
         AppState.AddService(newServiceValue);

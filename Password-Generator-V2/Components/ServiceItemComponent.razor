@@ -1,17 +1,68 @@
-﻿<div class="card">
-    <div class="card-header ">
+﻿@implements IDisposable
+
+@inject IJSRuntime JSRuntime
+@inject AppStateService AppState
+
+<div class="card" style="position: relative;">
+    <div class="card-header">
         <div class="row">
             <div class="col-sm-6 text-left">
                 <h5 class="card-category">Services</h5>
                 <h2 class="card-title">@Service.Name</h2>
             </div>
         </div>
+        <button class="ml-auto img-icon btn btn-link" style="position: absolute; top: 14px; right: 14px;" @onclick="RemoveItem">
+            <img src="images/trash.png" alt="trash">
+        </button>
     </div>
     <div class="card-body">
-        <div style="height: 100px;"></div>
+        <div style="padding-bottom: 30px;" class="row">
+            <div class="pb-1 col-sm-2 text-left">
+            </div>
+            <div class="pb-1 col-sm-3 text-left">
+                <ReadOnlyPassword Label="V1 Gen. Password" Password="@genV1Password" />
+            </div>
+            <div class="pb-1 col-sm-3 text-left">
+                <ReadOnlyPassword Label="V2 Gen. Password" Password="@AppState.V1Seed" />
+            </div>
+            <div class="pb-1 col-sm-4 text-left">
+            </div>
+        </div>
     </div>
 </div>
 
+<style>
+    .readonly-pwd {
+    cursor: copy !important;
+    }
+</style>
+
 @code {
-    [Parameter] public ServiceItem Service{ get; set; }
+    [Parameter] public ServiceItem Service { get; set; }
+
+    private string genV1Password = "";
+    private string genV2Password;
+
+    protected override void OnInitialized() {
+        AppState.V1SeedChanged += OnV1KeyChanged;
+
+        Task.Run(OnV1KeyChanged);
+    }
+
+    public void Dispose() {
+        AppState.V1SeedChanged -= OnV1KeyChanged;
+    }
+
+    public async Task OnV1KeyChanged() {
+        genV1Password = await GenerateV1Password(AppState.V1Seed);
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private void RemoveItem() {
+        AppState.RemoveService(Service);
+    }
+
+    private async Task<string> GenerateV1Password(string _seedv1) {
+        return await JSRuntime.InvokeAsync<string>("generateV1Password", _seedv1, Service.Name);
+    }
 }

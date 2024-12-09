@@ -87,6 +87,22 @@ code {
     text-align: start;
 }
 
+.img-icon {
+    display: inline-block !important;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    vertical-align: middle !important;
+    overflow: hidden;
+    padding: 0px !important;
+}
+
+    .img-icon img {
+        width: 100%;
+        height: 100%; 
+        object-fit: cover; 
+    }
+
 @media (max-width: 992px) {
     .custom-gap {
         gap: 1.5rem;

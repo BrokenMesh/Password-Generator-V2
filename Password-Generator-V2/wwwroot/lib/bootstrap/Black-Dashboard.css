@@ -2237,7 +2237,7 @@ select.form-control[multiple], select.form-control[size], textarea.form-control 
     user-select: none;
     background-color: transparent;
     border: 1px solid transparent;
-    padding: 5px 20px;
+    padding: 8px 20px;
     font-size: .875rem;
     line-height: 1.35em;
     border-radius: .25rem;

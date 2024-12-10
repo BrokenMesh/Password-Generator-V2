@@ -1,7 +1,27 @@
 ﻿@page "/settings"
 
-<h3>Settings</h3>
+@inject AppStateService AppState
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-sm-12 text-left">
+                <h5 class="card-category">Password-Generator-V2</h5>
+                <h2 class="card-title">Settings</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div style="height: 200px;">
+            <button @onclick="ClearCashes" class="btn">Clear Caches</button>
+        </div>
+    </div>
+</div>
 
 @code {
+
+    private void ClearCashes() {
+        AppState.ClearServices();
+    }
 
 }

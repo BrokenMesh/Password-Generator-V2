@@ -1,0 +1,188 @@
+{
+  "lookup": [
+    {
+      "emoji": "😀",
+      "alias": "smile"
+    },
+    {
+      "emoji": "❤️",
+      "alias": "heart"
+    },
+    {
+      "emoji": "🔥",
+      "alias": "fire"
+    },
+    {
+      "emoji": "👍",
+      "alias": "thumbs_up"
+    },
+    {
+      "emoji": "🎉",
+      "alias": "celebration"
+    },
+    {
+      "emoji": "🌍",
+      "alias": "earth"
+    },
+    {
+      "emoji": "🚀",
+      "alias": "rocket"
+    },
+    {
+      "emoji": "🍎",
+      "alias": "apple"
+    },
+    {
+      "emoji": "🌈",
+      "alias": "rainbow"
+    },
+    {
+      "emoji": "🐶",
+      "alias": "dog"
+    },
+    {
+      "emoji": "🐱",
+      "alias": "cat"
+    },
+    {
+      "emoji": "🍕",
+      "alias": "pizza"
+    },
+    {
+      "emoji": "☀️",
+      "alias": "sun"
+    },
+    {
+      "emoji": "🌙",
+      "alias": "moon"
+    },
+    {
+      "emoji": "🎶",
+      "alias": "music"
+    },
+    {
+      "emoji": "📚",
+      "alias": "books"
+    },
+    {
+      "emoji": "🏀",
+      "alias": "basketball"
+    },
+    {
+      "emoji": "⚡",
+      "alias": "lightning"
+    },
+    {
+      "emoji": "🌹",
+      "alias": "rose"
+    },
+    {
+      "emoji": "🎂",
+      "alias": "cake"
+    },
+    {
+      "emoji": "✈️",
+      "alias": "airplane"
+    },
+    {
+      "emoji": "🏝️",
+      "alias": "island"
+    },
+    {
+      "emoji": "🕊️",
+      "alias": "dove"
+    },
+    {
+      "emoji": "🌻",
+      "alias": "sunflower"
+    },
+    {
+      "emoji": "💡",
+      "alias": "idea"
+    },
+    {
+      "emoji": "🚴",
+      "alias": "cycling"
+    },
+    {
+      "emoji": "⏰",
+      "alias": "alarm"
+    },
+    {
+      "emoji": "📸",
+      "alias": "camera"
+    },
+    {
+      "emoji": "🦋",
+      "alias": "butterfly"
+    },
+    {
+      "emoji": "🎈",
+      "alias": "balloon"
+    },
+    {
+      "emoji": "⚽",
+      "alias": "soccer"
+    },
+    {
+      "emoji": "🍩",
+      "alias": "donut"
+    },
+    {
+      "emoji": "🌊",
+      "alias": "wave"
+    },
+    {
+      "emoji": "🏔️",
+      "alias": "mountain"
+    },
+    {
+      "emoji": "🛳️",
+      "alias": "ship"
+    },
+    {
+      "emoji": "🍔",
+      "alias": "burger"
+    },
+    {
+      "emoji": "🐾",
+      "alias": "paw_prints"
+    },
+    {
+      "emoji": "🌴",
+      "alias": "palm_tree"
+    },
+    {
+      "emoji": "💎",
+      "alias": "diamond"
+    },
+    {
+      "emoji": "🌪️",
+      "alias": "tornado"
+    },
+    {
+      "emoji": "🦄",
+      "alias": "unicorn"
+    },
+    {
+      "emoji": "🥇",
+      "alias": "gold_medal"
+    },
+    {
+      "emoji": "🎭",
+      "alias": "masks"
+    },
+    {
+      "emoji": "🍉",
+      "alias": "watermelon"
+    },
+    {
+      "emoji": "🎮",
+      "alias": "video_game"
+    },
+    {
+      "emoji": "🏡",
+      "alias": "house"
+    }
+  ]
+}

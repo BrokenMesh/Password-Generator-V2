@@ -33,6 +33,12 @@ namespace Password_Generator_V2.Logic
             Task.Run(StoreServiceItems);
         }
 
+        public void ClearServices() {
+            ServiceItems.Clear();
+            ServiceItemsChanged?.Invoke();
+            Task.Run(StoreServiceItems);
+        }
+
         public void SetV1Key(string _key) {
             V1Seed = _key;
             V1SeedChanged?.Invoke();

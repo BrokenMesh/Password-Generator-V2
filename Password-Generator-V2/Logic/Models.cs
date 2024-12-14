@@ -8,7 +8,15 @@ namespace Password_Generator_V2.Logic
         }
 
         public string Name { get; set; }
+    }
 
+    public class EmojiLookup {
+        public List<EmojiItem> lookup { get; set; }
+    }
+
+    public class  EmojiItem {
+        public string Emoji { get; set; }
+        public string Alias { get; set; }
     }
 
 }

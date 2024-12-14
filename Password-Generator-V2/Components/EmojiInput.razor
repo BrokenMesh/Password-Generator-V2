@@ -1,85 +1,75 @@
-﻿<div class="flyout-container">
-    <div class="flyout-input" @onclick="ToggleShow">
+﻿@inject AppStateService AppState
+@inject IJSRuntime JS
 
+<div class="flyout-container" id="flyout-container-@(Id)">
+    <div class="flyout-input" @onclick="@(() => SetShow(!isFlyoutOpen))">
+        @if (SelectedItem != null) {
+            @(SelectedItem.Emoji)
+        }
     </div>
     <div class="flyout-menu @(isFlyoutOpen ? "open" : "")">
         <div class="flyout-content">
-            <div class="flyout-item">Option 1</div>
-            <div class="flyout-item">Option 2</div>
-            <div class="flyout-item">Option 3</div>
-            <div class="flyout-item">Option 3</div>
-            <div class="flyout-item">Option 3</div>
-            <div class="flyout-item">Option 3</div>
-            <div class="flyout-item">Option 3</div>
+            @if (AppState.EmojiLookup != null) {
+                @foreach (var i in AppState.EmojiLookup.lookup) {
+                    <div @onclick="@(() => SelectElement(i))" class="flyout-item">@(i.Emoji)</div>
+                }
+            }
         </div>
     </div>
 </div>
 
-<style>
-    .flyout-container {
-        position: relative;
-        display: inline-block;
-    }
-
-    .flyout-input {
-        border-radius: .4285rem;
-        border: 1px solid #2b3553;
-        padding: 10px;
-        font-size: 14px;
-        width: 75px;
-        height: 75px;
-    }
-
-    .flyout-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 1000;
-        background-color: white;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        width: 190px;
-        height: 180px;
-
-        display: none;
-    }
-
-    .flyout-content {
-        overflow-y: scroll;
-        overflow-x: hidden;
-        scrollbar-width: thin;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .flyout-menu.open {
-        display: block;
-    }
-
-    .flyout-item {
-        margin: 4px;
-        width: 40px;
-        height: 40px;
-    }
-
-    .flyout-item:hover {
-        background-color: #f0f0f0;
-    }
-
-    .wrapper {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-</style>
-
-
 @code {
+    [Parameter] public EmojiItem? SelectedItem { get; set; } = null;
+
     private bool isFlyoutOpen = false;
 
-    private void ToggleShow() {
-        isFlyoutOpen = !isFlyoutOpen;
+    private IJSObjectReference? module;
+
+    private readonly Guid Id = Guid.NewGuid();
+
+    protected override void OnInitialized() {
+        AppState.EmojiLookupChanged += EmojiLookupChanged;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender) {
+        if(firstRender)  {
+            module = await JS.InvokeAsync<IJSObjectReference>("import", "./Components/EmojiInput.razor.js");
+            StateHasChanged();
+        }
+    }
+
+    public void Dispose() {
+        AppState.EmojiLookupChanged -= EmojiLookupChanged;
+        module?.DisposeAsync();
+    }
+
+    private async Task EmojiLookupChanged() {
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private void SelectElement(EmojiItem _i) {
+        SelectedItem = _i;
+    }
+
+    private async Task SetShow(bool _v) {
+        isFlyoutOpen = _v;
+
+        if (module == null) return;
+        var _objectRef = DotNetObjectReference.Create(this);
+
+        string _elementId = "flyout-container-" + Id;
+
+        if (isFlyoutOpen) {
+            await module.InvokeVoidAsync("addClickOutsideListener", _elementId, _objectRef);
+        }
+        else {
+            await module.InvokeVoidAsync("removeClickOutsideListener", _elementId);
+        }
+
         StateHasChanged();
     }
+
+    [JSInvokable]
+    public async Task OnOutsideClick() => await SetShow(false);
+    
 }

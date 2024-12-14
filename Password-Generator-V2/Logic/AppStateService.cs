@@ -1,4 +1,6 @@
-﻿using System.Net.NetworkInformation;
+﻿using System.Net.Http;
+using System.Net.Http.Json;
+using System.Net.NetworkInformation;
 
 namespace Password_Generator_V2.Logic
 {
@@ -7,18 +9,26 @@ namespace Password_Generator_V2.Logic
         public event Func<Task>? ServiceItemsChanged;
         public List<ServiceItem> ServiceItems { get; private set; }
 
+        public event Func<Task>? EmojiLookupChanged;
+        public EmojiLookup? EmojiLookup { get; private set; }
+
         public event Func<Task>? V1SeedChanged;
         public string V1Seed { get; private set; }
 
+
         private string ServiceItemsKey = "ServiceItems";
         private readonly StorageService storageService;
+        private readonly HttpClient httpClient;
 
-        public AppStateService(StorageService _storageService) {
+        public AppStateService(StorageService _storageService, HttpClient _httpClient) {
             storageService = _storageService;
+            httpClient = _httpClient;
 
             ServiceItems = new List<ServiceItem>();
             V1Seed = "";
+
             Task.Run(LoadServiceItems);
+            Task.Run(LoadEmojiLookup);
         }
 
         public void AddService(string _name) {
@@ -54,6 +64,11 @@ namespace Password_Generator_V2.Logic
                 ServiceItems = storedItems!;
                 ServiceItemsChanged?.Invoke();
             }
+        }
+
+        private async Task LoadEmojiLookup() {
+            EmojiLookup = (await httpClient.GetFromJsonAsync("/emoji_lookup.json", typeof(EmojiLookup))) as EmojiLookup;
+            EmojiLookupChanged?.Invoke();
         }
     }
 }

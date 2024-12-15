@@ -15,6 +15,8 @@ namespace Password_Generator_V2.Logic
         public event Func<Task>? V1SeedChanged;
         public string V1Seed { get; private set; }
 
+        public event Func<Task>? V2SeedChanged;
+        public List<EmojiItem?> V2Seed { get; private set; }
 
         private string ServiceItemsKey = "ServiceItems";
         private readonly StorageService storageService;
@@ -25,7 +27,13 @@ namespace Password_Generator_V2.Logic
             httpClient = _httpClient;
 
             ServiceItems = new List<ServiceItem>();
+
             V1Seed = "";
+            V2Seed = new List<EmojiItem?>();
+
+            for (int i = 0; i < 5; i++) {
+                V2Seed.Add(null);
+            }
 
             Task.Run(LoadServiceItems);
             Task.Run(LoadEmojiLookup);
@@ -52,6 +60,11 @@ namespace Password_Generator_V2.Logic
         public void SetV1Key(string _key) {
             V1Seed = _key;
             V1SeedChanged?.Invoke();
+        }
+
+        public void SetV2Key(int i, EmojiItem? item) {
+            V2Seed[i] = item;
+            V2SeedChanged?.Invoke();
         }
 
         private async Task StoreServiceItems() {

@@ -1,5 +1,7 @@
 ﻿
 
+using System.Text.Json.Serialization;
+
 namespace Password_Generator_V2.Logic
 {
     public class ServiceItem {

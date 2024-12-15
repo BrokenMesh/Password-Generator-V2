@@ -2,9 +2,11 @@
 @inject IJSRuntime JS
 
 <div class="flyout-container" id="flyout-container-@(Id)">
-    <div class="flyout-input" @onclick="@(() => SetShow(!isFlyoutOpen))">
+    <div class="flyout-input @(isFlyoutOpen ? "highlight" : "hidden")" @onclick="@(() => SetShow(!isFlyoutOpen))">
         @if (SelectedItem != null) {
-            @(SelectedItem.Emoji)
+            <div class="unselectable">
+                @(SelectedItem.Emoji)
+            </div>
         }
     </div>
     <div class="flyout-menu @(isFlyoutOpen ? "open" : "")">
@@ -20,6 +22,7 @@
 
 @code {
     [Parameter] public EmojiItem? SelectedItem { get; set; } = null;
+    [Parameter] public EventCallback<EmojiItem?> OnSelectedChanged { get; set; }
 
     private bool isFlyoutOpen = false;
 
@@ -49,6 +52,8 @@
 
     private void SelectElement(EmojiItem _i) {
         SelectedItem = _i;
+        if (OnSelectedChanged.HasDelegate) OnSelectedChanged.InvokeAsync(SelectedItem);
+        StateHasChanged();
     }
 
     private async Task SetShow(bool _v) {

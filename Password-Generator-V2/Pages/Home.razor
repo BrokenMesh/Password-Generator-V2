@@ -31,7 +31,7 @@
 
 <div class="create-pwd-container">
     <div class="create-pwd-centered">
-        <input @bind-value="@newServiceValue" type="text" class="form-control">
+        <input @bind-value="@newServiceValue" @bind-value:event="oninput" type="text" class="form-control">
         <button @onclick="AddService" class="btn btn-primary" type="button" disabled="@(string.IsNullOrEmpty(newServiceValue))">Add Service</button>
     </div>
 </div>

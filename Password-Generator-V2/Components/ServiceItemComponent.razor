@@ -17,15 +17,14 @@
     </div>
     <div class="card-body">
         <div style="padding-bottom: 30px;" class="row">
-            <div class="pb-1 col-sm-2 text-left">
-            </div>
-            <div class="pb-1 col-sm-3 text-left">
+            <div class="pb-1 col-sm-1 text-left"></div>
+            <div class="pb-1 col-sm-4 text-left">
                 <ReadOnlyPassword Label="V1 Gen. Password" Password="@genV1Password" />
             </div>
-            <div class="pb-1 col-sm-3 text-left">
-                <ReadOnlyPassword Label="V2 Gen. Password" Password="@AppState.V1Seed" />
-            </div>
             <div class="pb-1 col-sm-4 text-left">
+                <ReadOnlyPassword Label="V2 Gen. Password" Password="@genV2Password" />
+            </div>
+            <div class="pb-1 col-sm-3 text-left">
             </div>
         </div>
     </div>
@@ -41,20 +40,42 @@
     [Parameter] public ServiceItem Service { get; set; }
 
     private string genV1Password = "";
-    private string genV2Password;
+    private string genV2Password = "";
 
     protected override void OnInitialized() {
         AppState.V1SeedChanged += OnV1KeyChanged;
+        AppState.V2SeedChanged += UpdateV2Pwd;
 
         Task.Run(OnV1KeyChanged);
+        Task.Run(UpdateV2Pwd);
     }
 
     public void Dispose() {
         AppState.V1SeedChanged -= OnV1KeyChanged;
+        AppState.V2SeedChanged -= UpdateV2Pwd;
     }
 
     public async Task OnV1KeyChanged() {
-        genV1Password = await GenerateV1Password(AppState.V1Seed);
+        if(AppState.V1Seed.Length < 8) {
+            genV1Password = "";
+            genV2Password = "";
+        } else {
+            genV1Password = await GenerateV1Password(AppState.V1Seed);
+            await UpdateV2Pwd();
+        }
+
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public async Task UpdateV2Pwd() {
+        if (AppState.V2Seed.Any(v => v == null)) {
+            genV2Password = "";
+        }
+        else {
+            string _seedv2 = string.Join(" ", AppState.V2Seed.Select(v => v?.Alias ?? ""));
+            genV2Password = await GenerateV2Password(AppState.V1Seed, _seedv2);
+        }
+
         await InvokeAsync(StateHasChanged);
     }
 
@@ -64,5 +85,9 @@
 
     private async Task<string> GenerateV1Password(string _seedv1) {
         return await JSRuntime.InvokeAsync<string>("generateV1Password", _seedv1, Service.Name);
+    }
+
+    private async Task<string> GenerateV2Password(string _seedv1, string _seedv2) {
+        return await JSRuntime.InvokeAsync<string>("generateV2Password", _seedv1 + _seedv2, Service.Name);
     }
 }

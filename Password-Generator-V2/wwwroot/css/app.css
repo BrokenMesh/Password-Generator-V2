@@ -294,3 +294,7 @@ code
     background: #212131;
     border-radius: 20px;
 }
+
+hr {
+    border-top: 1px solid rgb(251 103 255 / 15%) !important;
+}

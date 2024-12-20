@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "/UH9MwyP",
+  "version": "XykpMkbE",
   "assets": [
     {
       "hash": "sha256-kII4YY+b2bpGQeDF9nd6JgaPTsaxSd+epNAKZOqwovw=",
@@ -66,8 +66,8 @@ self.assetsManifest = {
       "url": "_framework/Microsoft.JSInterop.WebAssembly.heoad7mujs.wasm"
     },
     {
-      "hash": "sha256-xxnFPjP2t8Z14YlnrSj64u0KZn+/RgWTH12q5GsD6us=",
-      "url": "_framework/Password-Generator-V2.fe4a1llmr1.wasm"
+      "hash": "sha256-Fx45A7xoIbexM43uojghHEFdqXa3B1/g9QtP1BOyH60=",
+      "url": "_framework/Password-Generator-V2.dv8wpxpqpj.wasm"
     },
     {
       "hash": "sha256-ADGWx8rPfs5ftD/wCG/cFqw585w1zgvqniZJtb7Jc2Q=",
@@ -150,7 +150,7 @@ self.assetsManifest = {
       "url": "_framework/System.Threading.cjrcei28ym.wasm"
     },
     {
-      "hash": "sha256-k3e8DglfZGPW50W8K6Oe8l6gKlnVT5+85S0uH0iA+YI=",
+      "hash": "sha256-bcrVJRkNeJ4l/p75Aq1n8yURCo5wmqqWHanPbRYZbzU=",
       "url": "_framework/blazor.boot.json"
     },
     {
@@ -222,7 +222,7 @@ self.assetsManifest = {
       "url": "images/trash.png"
     },
     {
-      "hash": "sha256-ELF246OUPZlrQGgf6lKoYn6qeeX0rOnGBEKa/cscQK8=",
+      "hash": "sha256-k65jeZIbuFMCIwn4AaFUEsRK7OGVYKkvG9UH8NrlxKM=",
       "url": "index.html"
     },
     {

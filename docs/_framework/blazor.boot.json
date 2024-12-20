@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Password-Generator-V2",
   "resources": {
-    "hash": "sha256-v8dnoHL4ix7Xfnm/E8IjfeFd7DZJB5RBPlGmvVQGueY=",
+    "hash": "sha256-aZKHHqpmW/rTGJFXWe1g+ZHSDsdbrPUejNPljXhgnmo=",
     "fingerprinting": {
       "Microsoft.AspNetCore.Components.yamklfysrj.wasm": "Microsoft.AspNetCore.Components.wasm",
       "Microsoft.AspNetCore.Components.Web.7apenvi18o.wasm": "Microsoft.AspNetCore.Components.Web.wasm",
@@ -17,7 +17,7 @@
       "Microsoft.Extensions.Primitives.tcgeh3akx1.wasm": "Microsoft.Extensions.Primitives.wasm",
       "Microsoft.JSInterop.426305nhc4.wasm": "Microsoft.JSInterop.wasm",
       "Microsoft.JSInterop.WebAssembly.heoad7mujs.wasm": "Microsoft.JSInterop.WebAssembly.wasm",
-      "Password-Generator-V2.xqosjpbha8.wasm": "Password-Generator-V2.wasm",
+      "Password-Generator-V2.iemgtevwo6.wasm": "Password-Generator-V2.wasm",
       "System.Collections.Concurrent.g0ny4l55tq.wasm": "System.Collections.Concurrent.wasm",
       "System.Collections.Immutable.4p5o6w4a64.wasm": "System.Collections.Immutable.wasm",
       "System.Collections.dbz1djrf6r.wasm": "System.Collections.wasm",
@@ -79,7 +79,7 @@
       "Microsoft.Extensions.Primitives.tcgeh3akx1.wasm": "sha256-TYdWPCwhKBdHQ79Fa7lunjzdUXfcxyaR1fAk0y11/ig=",
       "Microsoft.JSInterop.426305nhc4.wasm": "sha256-lNqP2ot1f2PhPr/5ZgFueuYFhUgz/pVAaqmi0u4H8Lo=",
       "Microsoft.JSInterop.WebAssembly.heoad7mujs.wasm": "sha256-99wG3VH14sWkwPaF5rX6YAcJvtAhDuqonwihvj2m5HA=",
-      "Password-Generator-V2.xqosjpbha8.wasm": "sha256-t6xYQiEmdB+Zp3vYFcStbuzjGWepXrSX8Kndis6MIyI=",
+      "Password-Generator-V2.iemgtevwo6.wasm": "sha256-lgVNjUWsDiajrMi+ufHfF6UZLkTUg6mKnhy8wwIbcCo=",
       "System.Collections.Concurrent.g0ny4l55tq.wasm": "sha256-ADGWx8rPfs5ftD/wCG/cFqw585w1zgvqniZJtb7Jc2Q=",
       "System.Collections.Immutable.4p5o6w4a64.wasm": "sha256-KMeffaq/Vtz03KZ0FBqktKzzgrNwJu04cl/UEYmIFuA=",
       "System.Collections.dbz1djrf6r.wasm": "sha256-CTI3d29LfaUnzMlS5L7tcLRQK0I/Rf4pQw9nDbpusnE=",

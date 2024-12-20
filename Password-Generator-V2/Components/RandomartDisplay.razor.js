@@ -9,5 +9,5 @@ export function startGenerateArt(id, seed) {
         return;
     }
 
-    generateArt(seed + "aaaaaaaaaaaaaaaaaaa", canvas);
+    generateArt(seed + "!7544d9cefa8f893b18A!7544d9cefa8f893b18A", canvas);
 }

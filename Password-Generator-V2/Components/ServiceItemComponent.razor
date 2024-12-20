@@ -24,7 +24,8 @@
             <div class="pb-1 col-sm-4 text-left">
                 <ReadOnlyPassword Label="V2 Gen. Password" Password="@genV2Password" />
             </div>
-            <div class="pb-1 col-sm-3 text-left">
+            <div class="pb-1 col-sm-3 text-left d-flex justify-content-center align-items-center">
+                <RandomartDisplay Seed="@(string.IsNullOrWhiteSpace(genV2Password) ? genV1Password : genV2Password)" Delay="0.3f" />
             </div>
         </div>
     </div>

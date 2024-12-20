@@ -190,7 +190,7 @@ code
     gap: 4px;
 }
 
-@media (max-width: 500px)
+@media (max-width: 576px)
 {
     .flyout-input
     {
@@ -202,6 +202,16 @@ code
     .pwd-v2-input
     {
         width: 275px;
+    }
+
+    .randomart-canvas {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+    .randomart-canvas {
+        width: 110px !important;
     }
 }
 
@@ -277,4 +287,10 @@ code
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.randomart-canvas {
+    width: 160px;
+    background: #212131;
+    border-radius: 20px;
 }

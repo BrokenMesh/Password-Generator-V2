@@ -1,0 +1,41 @@
+﻿@inject IJSRuntime JS
+
+<canvas id="art-@(Id)" width="512" height="512" class="randomart-canvas">
+    Your browser does not support the HTML5 canvas tag.
+</canvas>
+
+@code {
+    [Parameter] public string Seed { get; set; }
+    [Parameter] public float Delay { get; set; }
+
+    private IJSObjectReference? module;
+    private readonly Guid Id = Guid.NewGuid();
+    private Timer timer;
+
+    protected override void OnInitialized() {
+
+        timer = new Timer((_) => GenerateArt());
+        timer.Change(0, 0);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)  {
+        if (firstRender) {
+            module = await JS.InvokeAsync<IJSObjectReference>("import", "./Components/RandomartDisplay.razor.js");
+            module?.InvokeVoidAsync("startGenerateArt", Id, Seed);
+            StateHasChanged();
+        }
+    }
+
+    public void Dispose() {
+        module?.DisposeAsync();
+    }
+
+    protected override void OnParametersSet() {
+        timer.Change(TimeSpan.FromSeconds(Delay), TimeSpan.Zero);
+        StateHasChanged();
+    }
+
+    private void GenerateArt() {
+        module?.InvokeVoidAsync("startGenerateArt", Id, Seed);
+    }
+}

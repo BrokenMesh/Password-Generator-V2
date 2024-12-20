@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "BaCMKUMm",
+  "version": "/UH9MwyP",
   "assets": [
     {
       "hash": "sha256-kII4YY+b2bpGQeDF9nd6JgaPTsaxSd+epNAKZOqwovw=",
@@ -66,8 +66,8 @@ self.assetsManifest = {
       "url": "_framework/Microsoft.JSInterop.WebAssembly.heoad7mujs.wasm"
     },
     {
-      "hash": "sha256-lgVNjUWsDiajrMi+ufHfF6UZLkTUg6mKnhy8wwIbcCo=",
-      "url": "_framework/Password-Generator-V2.iemgtevwo6.wasm"
+      "hash": "sha256-xxnFPjP2t8Z14YlnrSj64u0KZn+/RgWTH12q5GsD6us=",
+      "url": "_framework/Password-Generator-V2.fe4a1llmr1.wasm"
     },
     {
       "hash": "sha256-ADGWx8rPfs5ftD/wCG/cFqw585w1zgvqniZJtb7Jc2Q=",
@@ -150,7 +150,7 @@ self.assetsManifest = {
       "url": "_framework/System.Threading.cjrcei28ym.wasm"
     },
     {
-      "hash": "sha256-72rmenCNJBK2CB/JbPSCl2B4F6LYx0AJZ2t1hBntA4g=",
+      "hash": "sha256-k3e8DglfZGPW50W8K6Oe8l6gKlnVT5+85S0uH0iA+YI=",
       "url": "_framework/blazor.boot.json"
     },
     {
